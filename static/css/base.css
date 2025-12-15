@@ -943,14 +943,23 @@ body {
 @media (max-width: 768px) {
   :root {
     --sidebar-width: 0;
+    /* Reduced topbar height for mobile */
+    --topbar-height: 64px;
   }
 
   .sidebar {
     transform: translateX(-100%);
+    /* Full width sidebar on mobile */
+    width: 280px;
   }
 
   .sidebar.open {
     transform: translateX(0);
+  }
+
+  /* Active overlay for mobile sidebar */
+  .sidebar-overlay.active {
+    display: block;
   }
 
   .main-wrapper {
@@ -963,10 +972,22 @@ body {
 
   .topbar {
     padding: 0 1rem;
+    /* Improved mobile topbar */
+    height: 64px;
   }
 
   .search-bar {
     max-width: none;
+    /* Hide search on small mobile */
+    display: none;
+  }
+
+  /* Show search on tablets */
+  @media (min-width: 640px) {
+    .search-bar {
+      display: flex;
+      flex: 1;
+    }
   }
 
   .page-content {
@@ -999,7 +1020,18 @@ body {
   }
 
   .topbar-right .btn-primary {
+    /* Hide add button text on mobile, show icon only */
+    padding: 0.75rem;
+  }
+
+  .topbar-right .btn-primary span {
     display: none;
+  }
+
+  /* Improve topbar buttons on mobile */
+  .topbar-btn {
+    width: 40px;
+    height: 40px;
   }
 }
 
@@ -1017,8 +1049,24 @@ body {
     gap: 0.5rem;
   }
 
+  /* Fully hide search on very small screens */
   .search-bar {
     display: none;
+  }
+
+  /* Stack activity timeline items better on small screens */
+  .timeline-item {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  /* Improve stat cards on mobile */
+  .stat-item {
+    padding: 1rem;
+  }
+
+  .stat-value {
+    font-size: 1.75rem;
   }
 }
 
@@ -1040,3 +1088,4 @@ body {
 ::-webkit-scrollbar-thumb:hover {
   background: var(--secondary-color);
 }
+
